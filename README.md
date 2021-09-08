@@ -28,7 +28,10 @@ How to run your code, if applicable
 Prerequisites - you should have node.js installed (including npm)
 Link to download page - https://nodejs.org/en/download/
 
-To start the app open project folder in command line and run `npm run start`
+To start the app
+1. Open project folder in command line.
+1. Run `npm install` to install dependencies.
+1. Run `npm run start` script.
 
 
 Link to the hosted application, if applicable
