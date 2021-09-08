@@ -37,7 +37,7 @@ const clear = () => {
 const getCurrentValue = () => {
     const value = operands[operands.length - 1];
 
-    if(!value && value !== 0 ) return '';
+    if (!value && value !== 0 ) return '';
 
     return Number.isInteger(value) ? value.toFixed(1) : value;
 };
@@ -60,15 +60,19 @@ const handleInput = (input) => {
 
 const handleValues = (inputString) => {
     const inputValues = inputString.replace( /\s\s+/g, ' ' ).split(' ');
-    inputValues.forEach(argument => {
-        if(isNumber(argument)) {
-            addOperand(argument);
-        } else if (isOperator(argument)) {
-            calculate(argument);
-        } else {
-            console.log(`Incorrect input. ${INPUT_REQUIREMENTS_MESSAGE}`);
-        }
-    });
+    const hasCorrectInput = inputValues.every(value => isNumber(value) || isOperator(value));
+
+    if (!hasCorrectInput) {
+        console.log(`Incorrect input. ${INPUT_REQUIREMENTS_MESSAGE}`);
+    } else {
+        inputValues.forEach(value => {
+            if(isNumber(value)) {
+                addOperand(value);
+            } else {
+                calculate(value);
+            }
+        });
+    }
 }
 
 const listenToInput = () => {
